@@ -31,15 +31,15 @@ void Add3(int num)
 
 int main()
 {
-	int num = 0;
+    int num = 0;
 
-	std::thread th1(Add, num);
-	std::thread th2(Add2, num);
-	std::thread th3(Add3, num);
+    std::thread th1(Add, num);
+    th1.join();
+    std::thread th2(Add2, num);
+    th2.join();
+    std::thread th3(Add3, num);
+    th3.join();
 
-	th1.join();
-	th2.join();
-	th3.join();
 
-	return 0;
+    return 0;
 }
